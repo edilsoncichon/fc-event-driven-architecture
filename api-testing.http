@@ -1,4 +1,6 @@
 
+### WALLET-CORE endpoints:
+
 POST http://localhost:8080/clients HTTP/1.1
 Content-Type: application/json
 
@@ -16,11 +18,20 @@ Content-Type: application/json
     "client_id": "87495b95-1c7f-4038-ae55-ab36ed6a9411"
 }
 
+###
 
 POST http://localhost:8080/transactions HTTP/1.1
 Content-Type: application/json
+
 {
-    "account_id_from": "f8df753c-3b58-43aa-8016-12aaa4f1ea3e",
-    "account_id_to": "0216ea38-524f-4e85-8743-d484a8f7538e",
-    "amount": 1
+    "account_id_from": "d1c87aa6-ebf5-4f52-916f-1e17e7f5d1ab",
+    "account_id_to": "6fac5d8e-1429-4071-bee3-179585775f5a",
+    "amount": 10
 }
+
+###
+
+### BALANCES endpoints:
+
+GET http://localhost:3003/accounts/d1c87aa6-ebf5-4f52-916f-1e17e7f5d1ab HTTP/1.1
+Content-Type: application/json

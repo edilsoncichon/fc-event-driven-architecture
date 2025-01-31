@@ -7,6 +7,9 @@ services:
       - ./wallet-core:/app
     ports:
       - 8080:8080
+    depends_on:
+      - wallet-core-db
+      - kafka
 
   wallet-core-db:
     image: mysql:5.7
@@ -18,7 +21,21 @@ services:
     ports:
       - 3306:3306
     volumes:
+      - ./wallet-core/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
       - .docker/wallet-core-db:/var/lib/mysql
+
+  balances-db:
+    image: mysql:5.7
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: balances
+      MYSQL_PASSWORD: root
+    ports:
+      - 3307:3306
+    volumes:
+      - ./balances/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
+      - .docker/balances-db:/var/lib/mysql
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
