@@ -24,6 +24,27 @@ services:
       - ./wallet-core/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
       - .docker/wallet-core-db:/var/lib/mysql
 
+  balances-api:
+    build: ./balances
+    depends_on:
+      - balances-db
+    volumes:
+      - ./balances:/app
+    ports:
+      - 3003:3003
+    command: php -S 0.0.0.0:3003 api.php
+    restart: always
+
+  balances-consumer:
+    build: ./balances
+    depends_on:
+      - kafka
+      - balances-db
+    volumes:
+      - ./balances:/app
+    command: php consumer.php
+    restart: always
+
   balances-db:
     image: mysql:5.7
     platform: linux/amd64
