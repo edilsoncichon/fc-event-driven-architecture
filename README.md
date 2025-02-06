@@ -19,5 +19,5 @@ docker compose attach wallet-core
 docker compose attach balances-consumer  
 ```
 
-## Testando via API
+## Testing via API
 Use the `./api-testing.http` file in your preferred IDE to test the microservices' endpoints.
