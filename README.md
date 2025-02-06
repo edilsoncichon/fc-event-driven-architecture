@@ -4,8 +4,8 @@ This is a study project created with the purpose of learning about communication
 ## Project Structure  
 
 The project consists of two microservices, which are:
-* `./wallet-core`: a microservice written in GO that manages transactions and bank accounts, producing events/messages that are sent to Kafka;  
-* `./balances`: a microservice written in PHP responsible for the balance of bank accounts, consuming messages from Kafka and updating its database;  
+* [wallet-core](./wallet-core): a microservice written in GO that manages transactions and bank accounts, producing events/messages that are sent to Kafka;  
+* [balances](./balances): a microservice written in PHP responsible for the balance of bank accounts, consuming messages from Kafka and updating its database;  
 
 ## Useful Commands  
 ```bash  
@@ -20,4 +20,4 @@ docker compose attach balances-consumer
 ```
 
 ## Testing via API
-Use the `./api-testing.http` file in your preferred IDE to test the microservices' endpoints.
+Use the [api-testing.http](./api-testing.http) file in your preferred IDE (obviously it's PHPStorm lol) to test the microservices' endpoints.
